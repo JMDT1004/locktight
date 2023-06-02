@@ -15,7 +15,6 @@ function getUserInput() {
     var numbers = confirm('Click ok to include a number?');
     var specs = confirm('Click ok to include a special character?');
 
-    //always return functions//
     return [amount, lower, upper, numbers, specs];
 }
 
