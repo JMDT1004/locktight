@@ -21,7 +21,35 @@ function getUserInput() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+
+  var pass = '';
+  var includelower = choices[1];
+  var includeupper = choices[2];
+  var includenumbers = choices[3];
+  var includespecs = choices[4];
+  var charAmount = choices[0];
+  var possibleChars = [];
+
+  //using prompt responses to chose types of cahraters generated//
+  if (includelower) {
+      possibleChars = possibleChars.concat(lower);
+  }
+  if (includeupper) {
+      possibleChars = possibleChars.concat(upper);
+  }
+  if (includenumbers) {
+      possibleChars = possibleChars.concat(numbers);
+  }
+  if (includespecs) {
+      possibleChars = possibleChars.concat(specs);
+  }
+
+ 
+}
+
+function generatePassword(){
+
+  var password = writePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
