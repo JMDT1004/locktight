@@ -17,7 +17,7 @@ function getUserInput() {
 
   return [amount, lower, upper, numbers, specs];
 }
-
+var choices = getUserInput();
 
 // Write password to the #password input
 function writePassword() {
@@ -66,5 +66,6 @@ function generatePassword() {
 
 }
 
+generatePassword();
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
