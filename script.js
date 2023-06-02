@@ -9,13 +9,13 @@ var specs = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=
 //Prompts section for user input//
 function getUserInput() {
 
-    var amount = Number(prompt('Choose from 8 to 128 characters for password here.'));
-    var lower = confirm('Click ok to include a lowercase letter?');
-    var upper = confirm('Click ok to include an uppercase letter?');
-    var numbers = confirm('Click ok to include a number?');
-    var specs = confirm('Click ok to include a special character?');
+  var amount = Number(prompt('Choose from 8 to 128 characters for password here.'));
+  var lower = confirm('Click ok to include a lowercase letter?');
+  var upper = confirm('Click ok to include an uppercase letter?');
+  var numbers = confirm('Click ok to include a number?');
+  var specs = confirm('Click ok to include a special character?');
 
-    return [amount, lower, upper, numbers, specs];
+  return [amount, lower, upper, numbers, specs];
 }
 
 
@@ -32,22 +32,32 @@ function writePassword() {
 
   //using prompt responses to chose types of cahraters generated//
   if (includelower) {
-      possibleChars = possibleChars.concat(lower);
+    possibleChars = possibleChars.concat(lower);
   }
   if (includeupper) {
-      possibleChars = possibleChars.concat(upper);
+    possibleChars = possibleChars.concat(upper);
   }
   if (includenumbers) {
-      possibleChars = possibleChars.concat(numbers);
+    possibleChars = possibleChars.concat(numbers);
   }
   if (includespecs) {
-      possibleChars = possibleChars.concat(specs);
+    possibleChars = possibleChars.concat(specs);
   }
 
- 
+  //loops random character generator to the 'amount' user designates//
+  for (var count = 0; count < charAmount; count++) {
+    var randomNum = Math.random();
+    var randomIndex = Math.floor(randomNum * possibleChars.length);
+    var randomChar = possibleChars[randomIndex];
+
+    //concatenates random character generator in pass string//
+    pass += randomChar;
+  }
+
+  return pass;
 }
 
-function generatePassword(){
+function generatePassword() {
 
   var password = writePassword();
   var passwordText = document.querySelector("#password");
